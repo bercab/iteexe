@@ -17,7 +17,7 @@ jobs:
       - name: check xcode
         run: |
           echo "---> find apps"
-          find /Applications/
+          ls -l /Applications/Xcode*
 
       - name: Checkout
         uses: actions/checkout@v2
