@@ -50,6 +50,8 @@ jobs:
           cd installs/osx
           sed -i .bak 's/\/Volumes\/exe/\/Volumes\/untitled/g' make.py
           python make.py -p
+        env:
+          DEVELOPER_DIR: /Applications/Xcode_10.3.app/Contents/Developer
 
       - name: Upload artifact
         uses: actions/upload-artifact@v2
