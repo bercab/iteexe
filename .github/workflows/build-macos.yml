@@ -4,11 +4,14 @@ on: [push]
 
 jobs:
   build-macos:
-    runs-on: macos-latest
+    runs-on: macos-10.15
 
     env:
       ACTIONS_ALLOW_UNSECURE_COMMANDS: true
       PYTHON_CONFIGURE_OPTS: --enable-shared
+      DEVELOPER_DIR: /Applications/Xcode_10.3.app/Contents/Developer
+      SDKROOT: /Applications/Xcode_10.3.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.13.sdk
+      MACOSX_DEPLOYMENT_TARGET: 10.13
 
     steps:
       - name: Checkout
@@ -21,8 +24,6 @@ jobs:
           command: |
             easy_install pip
             pip install --upgrade pip
-        env:
-          DEVELOPER_DIR: /Applications/Xcode_10.3.app/Contents/Developer
 
       - name: Install macOS build requirements
         run: |
@@ -43,8 +44,6 @@ jobs:
           pip install oauthlib
           pip install webassets
           pip install cssmin
-        env:
-          DEVELOPER_DIR: /Applications/Xcode_10.3.app/Contents/Developer
 
       - name: Create disk image
         run: hdiutil create -size 500m -layout GPTSPUD -fs 'Journaled HFS+' -type UDIF installs/osx/exe
@@ -54,8 +53,6 @@ jobs:
           cd installs/osx
           sed -i .bak 's/\/Volumes\/exe/\/Volumes\/untitled/g' make.py
           python make.py -p
-        env:
-          DEVELOPER_DIR: /Applications/Xcode_10.3.app/Contents/Developer
 
       - name: Upload artifact
         uses: actions/upload-artifact@v2
