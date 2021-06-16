@@ -10,8 +10,8 @@ jobs:
       ACTIONS_ALLOW_UNSECURE_COMMANDS: true
       PYTHON_CONFIGURE_OPTS: --enable-shared
       #DEVELOPER_DIR: /Applications/Xcode_10.3.app/Contents/Developer
-      SDKROOT: /Applications/Xcode_10.3.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.13.sdk
-      MACOSX_DEPLOYMENT_TARGET: 10.13
+      SDKROOT: /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.14.sdk
+      MACOSX_DEPLOYMENT_TARGET: 10.14
 
     steps:
       - name: Checkout
