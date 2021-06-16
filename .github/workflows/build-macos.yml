@@ -16,12 +16,8 @@ jobs:
     steps:
       - name: check xcode
         run: |
-          echo "---> latest"
-          find /Applications/Xcode.app
-          echo "---> 10.3"
-          find /Applications/Xcode_10.13.app
-          echo "---> 11.7"
-          find /Applications/Xcode_11.7.app
+          echo "---> find apps"
+          find /Applications/
 
       - name: Checkout
         uses: actions/checkout@v2
