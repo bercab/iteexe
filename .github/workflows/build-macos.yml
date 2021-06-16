@@ -21,6 +21,8 @@ jobs:
           command: |
             easy_install pip
             pip install --upgrade pip
+        env:
+          DEVELOPER_DIR: /Applications/Xcode_10.3.app/Contents/Developer
 
       - name: Install macOS build requirements
         run: |
@@ -41,6 +43,8 @@ jobs:
           pip install oauthlib
           pip install webassets
           pip install cssmin
+        env:
+          DEVELOPER_DIR: /Applications/Xcode_10.3.app/Contents/Developer
 
       - name: Create disk image
         run: hdiutil create -size 500m -layout GPTSPUD -fs 'Journaled HFS+' -type UDIF installs/osx/exe
