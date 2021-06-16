@@ -20,3 +20,7 @@ jobs:
           ls -l /Applications/Xcode*
           echo "---> find sdks"
           ls -l /Applications/Xcode_10.3.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/
+          echo "---> find sdks 12"
+          ls -l /Applications/Xcode_12.4.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/
+          echo "---> find sdks 11"
+          ls -l /Applications/Xcode_11.7.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/
