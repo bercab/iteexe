@@ -1,0 +1,22 @@
+name: check-xcode
+
+on: [push]
+
+jobs:
+  build-macos:
+    runs-on: macos-10.15
+
+    env:
+      ACTIONS_ALLOW_UNSECURE_COMMANDS: true
+      PYTHON_CONFIGURE_OPTS: --enable-shared
+      DEVELOPER_DIR: /Applications/Xcode_11.5.app/Contents/Developer
+#SDKROOT: /Applications/Xcode_10.14.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.14.sdk
+#MACOSX_DEPLOYMENT_TARGET: 10.14
+
+    steps:
+      - name: check xcode
+        run: |
+          echo "---> find apps"
+          ls -l /Applications/Xcode*
+          echo "---> find sdks"
+          ls -l /Applications/Xcode_10.3.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/
