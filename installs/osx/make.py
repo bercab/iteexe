@@ -61,7 +61,7 @@ os.chmod('exe.app/Contents/Resources/exe/templates/mimetex-darwin.cgi', 0755)
 open('exe.app/Contents/Resources/exe/version', 'w').write(version.version)
 
 shutil.copy(os.path.join(WDIR, 'installs/osx', 'dotDS_Store'), '.DS_Store')
-os.mkdir(os.path.join(WDIR, 'installs/osx', '.background'))
+os.mkdir('.background')
 shutil.copy(os.path.join(WDIR, 'installs/osx', 'exedmg.png'), '.background/exedmg.png')
 subprocess.check_call('ln -s /Applications Applications', shell=True)
 
