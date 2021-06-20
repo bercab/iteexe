@@ -66,6 +66,7 @@ open('exe.app/Contents/Resources/exe/version', 'w').write(version.version)
 
 shutil.copy(os.path.join(WDIR, 'installs/osx', 'exedmg.json'), 'exedmg.json')
 shutil.copy(os.path.join(WDIR, 'installs/osx', 'exedmg.png'), 'exedmg.png')
+shutil.copy(os.path.join(WDIR, 'installs/osx', 'exe.icns'), 'exe.icns')
 #subprocess.check_call('ln -s /Applications Applications', shell=True)
 
 #os.chdir(WDIR)
