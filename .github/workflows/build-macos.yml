@@ -58,8 +58,17 @@ jobs:
       - name: Build package
         run: |
           brew install npm
+          echo "--> Installing appdmg" 
           npm install -g appdmg
+          which appdmg
+          echo "--> Installing appdmg" 
+          npm install  appdmg
+          which appdmg
+          ls -l /usr/local/bin/appdmg
+          echo "--> bin:"
+          ls -l /usr/local/bin
           cd installs/osx
+          echo "--> Creating python app and DMG image..."
           python make.py -p
 
       - name: Upload artifact
