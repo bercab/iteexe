@@ -74,7 +74,7 @@ shutil.copy(os.path.join(WDIR, 'installs/osx', 'exedmg.png'), 'exedmg.png')
 #subprocess.check_call('hdiutil detach %s' % VOL, shell=True)
 
 # build the final DMG image with appdmg
-subprocess.check_call("appdmg exedmg.json %s" % outhpathn)
+subprocess.check_call("appdmg exedmg.json %s" % outpathn)
 
 #subprocess.check_call('hdiutil convert -ov -format UDZO -o %s %s' %
 #        (outpathn, TEMPLATE),
