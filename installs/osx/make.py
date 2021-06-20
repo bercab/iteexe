@@ -12,8 +12,11 @@ import subprocess
 os.chdir('../..')
 WDIR = os.getcwd()
 TEMPLATE = os.path.join(WDIR, 'installs/osx', 'exe.dmg')
-VOL = '/Volumes/exe'
+#VOL = '/Volumes/exe'
+VOL = '/tmp/exe'
 OUTPUT = os.path.join(WDIR, 'installs/osx')
+
+os.mkdir(VOL)
 
 do_upload = False
 try:
@@ -42,7 +45,7 @@ from exe.engine import version
 outpathn = os.path.join(OUTPUT, 'INTEF-exe-%s.dmg' % version.release)
 
 # attach the disk image template
-subprocess.check_call('hdiutil attach %s' % TEMPLATE, shell=True)
+#subprocess.check_call('hdiutil attach %s' % TEMPLATE, shell=True)
 
 # copy the app to the template
 os.chdir(VOL)
@@ -61,17 +64,18 @@ shutil.copy(os.path.join(WDIR, 'debian/changelog'), 'Changelog.txt')
 os.chmod('exe.app/Contents/Resources/exe/templates/mimetex-darwin.cgi', 0755)
 open('exe.app/Contents/Resources/exe/version', 'w').write(version.version)
 
-shutil.copy(os.path.join(WDIR, 'installs/osx', 'dotDS_Store'), '.DS_Store')
-os.mkdir('.background')
-shutil.copy(os.path.join(WDIR, 'installs/osx', 'exedmg.png'), '.background/exedmg.png')
-subprocess.check_call('ln -s /Applications Applications', shell=True)
+shutil.copy(os.path.join(WDIR, 'installs/osx', 'exedmg.json'), 'exedmg.json')
+shutil.copy(os.path.join(WDIR, 'installs/osx', 'exedmg.png'), 'exedmg.png')
+#subprocess.check_call('ln -s /Applications Applications', shell=True)
 
-os.chdir(WDIR)
+#os.chdir(WDIR)
 
 # detatch the disk image template
-subprocess.check_call('hdiutil detach %s' % VOL, shell=True)
+#subprocess.check_call('hdiutil detach %s' % VOL, shell=True)
 
-# build a compressed image
-subprocess.check_call('hdiutil convert -ov -format UDZO -o %s %s' %
-        (outpathn, TEMPLATE),
-        shell=True)
+# build the final DMG image with appdmg
+subprocess.check_call("appdmg exedmg.json %s" % outhpathn)
+
+#subprocess.check_call('hdiutil convert -ov -format UDZO -o %s %s' %
+#        (outpathn, TEMPLATE),
+#        shell=True)
