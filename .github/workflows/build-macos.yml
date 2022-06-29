@@ -42,25 +42,25 @@ jobs:
           #brew install pyenv
           #pyenv install 2.7.18 
           #pyenv local 2.7.18
-          export PYENV_ROOT="$HOME/.pyenv
-          export PATH="$PYENV_ROOT/bin:$PATH"
-          eval "$(pyenv init -)"
-          echo 'export PYENV_ROOT="$HOME/.pyenv"' >> /etc/profile
-          echo 'command -v pyenv >/dev/null || export PATH="$PYENV_ROOT/bin:$PATH"' >> /etc/profile
-          echo 'eval "$(pyenv init -)"' >> /etc/profile
-          pip install --upgrade pip
+#          export PYENV_ROOT="$HOME/.pyenv
+#         export PATH="$PYENV_ROOT/bin:$PATH"
+#         eval "$(pyenv init -)"
+#         echo 'export PYENV_ROOT="$HOME/.pyenv"' >> /etc/profile
+#         echo 'command -v pyenv >/dev/null || export PATH="$PYENV_ROOT/bin:$PATH"' >> /etc/profile
+#         echo 'eval "$(pyenv init -)"' >> /etc/profile
+#         pip install --upgrade pip
 
 
-#      - name: Install required python and pip
-#        uses: gabrielfalcao/pyenv-action@v9
-#        env:
-#          LDFLAGS: "-L/usr/local/opt/openssl@3/lib"
-#          CPPFLAGS: "-I/usr/local/opt/openssl@3/include"
-#        with:
-#          default: 2.7.18
-#          command: |
-#            easy_install pip
-#            pip install --upgrade pip
+      - name: Install required python and pip
+        uses: gabrielfalcao/pyenv-action@v10
+        env:
+          LDFLAGS: "-L/usr/local/opt/openssl@3/lib"
+          CPPFLAGS: "-I/usr/local/opt/openssl@3/include"
+        with:
+          default: 2.7.18
+          command: |
+            easy_install pip
+            pip install --upgrade pip
 
       - name: Install Python requirements
         run: |
