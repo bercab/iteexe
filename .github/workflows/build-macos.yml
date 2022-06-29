@@ -39,12 +39,12 @@ jobs:
           echo "--> brew list: "
           brew list
           brew install libxml2
-          export LDFLAGS="-L/usr/local/opt/openssl@3/lib"
-          export CPPFLAGS="-I/usr/local/opt/openssl@3/include"
-          brew install pyenv
-          pyenv install 2.7.18 
-          pyenv local 2.7.18
-          pip install --upgrade pip
+          #export LDFLAGS="-L/usr/local/opt/openssl@3/lib"
+          #export CPPFLAGS="-I/usr/local/opt/openssl@3/include"
+          #brew install pyenv
+          #pyenv install 2.7.18 
+          #pyenv local 2.7.18
+          #pip install --upgrade pip
 
 
       - name: Install required python and pip
