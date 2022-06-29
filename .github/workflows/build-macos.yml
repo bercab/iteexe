@@ -25,10 +25,11 @@ jobs:
           echo "--> brew list:"
           brew list
           echo "--> brew install openssl@1.1:"
-          #brew reinstall --build-from-source openssl@1.1
-          #brew link openssl@1.1 --force
-          brew install --build-from-source openssl
-          brew link openssl --force
+          brew reinstall --build-from-source openssl@1.1
+          brew link openssl@1.1 --force
+          #brew install --build-from-source openssl
+          #brew link openssl --force
+          brew link openssl@1.1 --force
           echo "--> brew prefix :"
           brew --prefix openssl
           echo "--> brew list:"
