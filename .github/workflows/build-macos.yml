@@ -25,11 +25,19 @@ jobs:
           echo "--> brew list:"
           brew list
           echo "--> brew install openssl@1.1:"
-          brew install --build-from-source openssl@1.1
-          brew link openssl@1.1 --force
+          #brew reinstall --build-from-source openssl@1.1
+          #brew link openssl@1.1 --force
+          brew install --build-from-source openssl
+          brew link openssl --force
           echo "--> brew prefix :"
-          brew --prefix openssl@1.1
+          brew --prefix openssl
+          echo "--> brew list:"
+          brew list
           brew install libxml2
+          #export LDFLAGS="-L/usr/local/opt/openssl@1.1/lib"
+          #export CPPFLAGS="-I/usr/local/opt/openssl@1.1/include"
+          #brew install pyenv
+          #pyenv 
       - name: Install required python and pip
         uses: gabrielfalcao/pyenv-action@v9
         with:
