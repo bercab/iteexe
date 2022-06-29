@@ -1,9 +1,9 @@
-name: build-macos
+name: build-macos2
 
 on: [push]
 
 jobs:
-  build-macos:
+  build-macos2:
     runs-on: macos-10.15
 
     env:
