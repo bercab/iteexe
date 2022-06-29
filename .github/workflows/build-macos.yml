@@ -33,17 +33,21 @@ jobs:
           echo "--> brew list: "
           brew list
           brew install libxml2
-          #export LDFLAGS="-L/usr/local/opt/openssl@1.1/lib"
-          #export CPPFLAGS="-I/usr/local/opt/openssl@1.1/include"
-          #brew install pyenv
-          #pyenv 
-      - name: Install required python and pip
-        uses: gabrielfalcao/pyenv-action@v9
-        with:
-          default: 2.7.18
-          command: |
-            easy_install pip
-            pip install --upgrade pip
+          export LDFLAGS="-L/usr/local/opt/openssl@3/lib"
+          export CPPFLAGS="-I/usr/local/opt/openssl@3/include"
+          brew install pyenv
+          pyenv install 2.7.18 
+          pyenv local 2.7.18
+          pip install --upgrade pip
+
+#      - name: Install required python and pip
+#        uses: gabrielfalcao/pyenv-action@v9
+#        with:
+#          default: 2.7.18
+#          command: |
+#            easy_install pip
+#            pip install --upgrade pip
+
       - name: Install Python requirements
         run: |
           pip install pycrypto --no-binary :all:
