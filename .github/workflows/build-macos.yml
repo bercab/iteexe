@@ -36,19 +36,19 @@ jobs:
           #brew link openssl@1.1 --force
           
           echo "--> compile openssl 1.1.1p:"
-          mkdir /usr/local/src
-          cd /usr/local/src
+          mkdir src
+          cd src
           curl --remote-name https://www.openssl.org/source/openssl-1.1.1p.tar.gz
           tar -xzvf openssl-1.1.1p.tar.gz
           cd openssl-1.1.1p
-          ./config --prefix=/usr/local/openssl-1.1.1p
+          ./config --prefix=/Users/runner/openssl
           make 
           make install
 
-          export PATH=/usr/local/openssl-1.1.1p/bin:$PATH
-          export LDFLAGS="-L/usr/local/openssl-1.1.1p/lib"
-          export CPPFLAGS="-I/usr/local/openssl-1.1.1p/include"
-          export PKG_CONFIG_PATH="/usr/local/openssl-1.1.1p/lib/pkgconfig"
+          export PATH=/Users/runner/openssl/bin:$PATH
+          export LDFLAGS="-L/Users/runner/openssl/lib"
+          export CPPFLAGS="-I/Users/runner/openssl/include"
+          export PKG_CONFIG_PATH="/Users/runner/openssl/lib/pkgconfig"
 
           brew install libxml2
 
