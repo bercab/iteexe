@@ -23,16 +23,8 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v2
 
-      - name: Install macOS build requirements
+      - name: Compile openssl 1.1.1p
         run: |
-          #echo "--> Xcode developer dir contents"
-          #ls -n /Applications/ | grep Xcode*
-          #brew uninstall --ignore-dependencies openssl@1.1
-          #echo "--> brew list:"
-          #brew list 
-          #echo "--> brew install openssl@1.1:"
-          #brew install --build-from-source openssl@1.1
-          #brew link openssl@1.1 --force
           
           echo "--> compile openssl 1.1.1p:"
           mkdir src
@@ -44,7 +36,8 @@ jobs:
           make 
           make install
 
-
+      - name: Install python 2.7.18 
+        run: |
           export PATH=/Users/runner/openssl/bin:$PATH
           export LDFLAGS="-L/Users/runner/openssl/lib"
           export CPPFLAGS="-I/Users/runner/openssl/include"
@@ -63,7 +56,8 @@ jobs:
           #echo 'eval "$(pyenv init -)"' >> /etc/profile
           pyenv local 2.7.18
           pip install --upgrade pip
-
+          cd /
+          pyenv local 2.7.18
 
 #      - name: Install required python and pip
 #        uses: gabrielfalcao/pyenv-action@v10
@@ -111,9 +105,10 @@ jobs:
           npm install  appdmg
           which appdmg
           ls -l /usr/local/bin/appdmg
-          echo "--> bin:"
-          ls -l /usr/local/bin
+          #echo "--> bin:"
+          #ls -l /usr/local/bin
           cd installs/osx
+          pyenv local 2.7.18
           echo "--> Creating python app and DMG image..."
           python make.py -p
       - name: Upload artifact
