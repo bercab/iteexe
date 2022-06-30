@@ -36,6 +36,7 @@ jobs:
           #brew link openssl@1.1 --force
           
           echo "--> compile openssl 1.1.1p:"
+          mkdir /usr/local/src
           cd /usr/local/src
           curl --remote-name https://www.openssl.org/source/openssl-1.1.1p.tar.gz
           tar -xzvf openssl-1.1.1p.tar.gz
