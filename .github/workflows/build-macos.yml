@@ -40,11 +40,11 @@ jobs:
           export LDFLAGS="-L/usr/local/opt/openssl@3/lib"
           export CPPFLAGS="-I/usr/local/opt/openssl@3/include"
           export PKG_CONFIG_PATH="/usr/local/opt/openssl@3/lib/pkgconfig"
-          brew install pyenv
-          pyenv install 2.7.18 
+          git clone https://github.com/pyenv/pyenv.git ~/.pyenv
           export PYENV_ROOT="$HOME/.pyenv"
           export PATH="$PYENV_ROOT/bin:$PATH"
           eval "$(pyenv init -)"
+          pyenv install 2.7.18 
           #echo 'export PYENV_ROOT="$HOME/.pyenv"' >> /etc/profile
           #echo 'command -v pyenv >/dev/null || export PATH="$PYENV_ROOT/bin:$PATH"' >> /etc/profile
           #echo 'eval "$(pyenv init -)"' >> /etc/profile
